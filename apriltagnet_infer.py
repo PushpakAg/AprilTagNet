@@ -16,7 +16,7 @@ print("Loading model...")
 model = EfficientNet.from_pretrained('efficientnet-b0')
 num_ftrs = model._fc.in_features
 model._fc = nn.Linear(num_ftrs, 587)
-model.load_state_dict(torch.load('/home/pushpak/Desktop/april-tags-model/apriltag_effnet_epoch_25.pth', map_location="cpu"))
+model.load_state_dict(torch.load('apriltag_effnet_epoch_25.pth', map_location="cpu"))
 
 model.eval()
 
@@ -33,7 +33,7 @@ def predict_image(image_path, model):
         _, pred = torch.max(output, 1)
     return pred.item()
 
-image_path = "/home/pushpak/Pictures/Screenshot from 2024-09-15 19-41-37.png"
+image_path = "test.jpg"
 pred_image = predict_image(image_path, model)
 print(f"Prediction for the image: {pred_image}")
 
