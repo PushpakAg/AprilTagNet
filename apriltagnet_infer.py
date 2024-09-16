@@ -16,11 +16,11 @@ print("Loading model...")
 model = EfficientNet.from_pretrained('efficientnet-b0')
 num_ftrs = model._fc.in_features
 model._fc = nn.Linear(num_ftrs, 587)
-model.load_state_dict(torch.load('apriltag_effnet_epoch_25.pth', map_location="cpu"))
+model.load_state_dict(torch.load('model/apriltag_effnet_epoch_25.pth'))
 
 model.eval()
 
-device = torch.device("cpu")
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = model.to(device)
 print(f"Model loaded and moved to {device}.")
 
