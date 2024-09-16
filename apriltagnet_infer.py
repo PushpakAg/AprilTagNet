@@ -33,7 +33,7 @@ def predict_image(image_path, model):
         _, pred = torch.max(output, 1)
     return pred.item()
 
-image_path = "test.jpg"
+image_path = "116_aug_2.jpg"
 pred_image = predict_image(image_path, model)
 print(f"Prediction for the image: {pred_image}")
 
