@@ -13,10 +13,10 @@ data_transforms = transforms.Compose([
 ])
 
 print("Loading model...")
-model = EfficientNet.from_pretrained('efficientnet-b0')
+model = EfficientNet.from_name('efficientnet-b0')
 num_ftrs = model._fc.in_features
 model._fc = nn.Linear(num_ftrs, 587)
-model.load_state_dict(torch.load('model/apriltag_effnet_epoch_25.pth'))
+model.load_state_dict(torch.load('model/apriltag_effnet_epoch_25.pth',weights_only=True))
 
 model.eval()
 
